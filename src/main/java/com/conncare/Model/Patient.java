@@ -1,29 +1,23 @@
 package com.conncare.Model;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
+@Data
+@SuperBuilder
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+public class Patient extends User {
 
 
-@Getter
-@Setter
-@Document(collection = "patient")
-public class Patient implements Serializable {
+    public Patient(String uuid, String name, String email, String pathPhoto, String password, Number weight, Number height, LocalDate birthDate) {
+        super(uuid, name, email, pathPhoto, password, weight, height, birthDate);
+    }
 
-    @Id
-    private String uuid;
-    private String name;
-    private String email;
-    private String pathPhoto;
-    private String password;
-    private Number weight;
-    private Number height;
-    private LocalDate birthDate = LocalDate.now();
-    
+    public void scheduleAppointment(){
+
+    }
 
 }
